@@ -1,6 +1,6 @@
 function generarDashboard(){
 
-    // OBTENER DATOS
+    // OBTENER DATOS brenda
 
     const tipo =
     document.getElementById("tipo").value;
@@ -9,7 +9,7 @@ function generarDashboard(){
     document.getElementById("titulo").value;
 
     const estudiante =
-    document.getElementById("estudiante").value;
+    document.getElementById("estudiante brenda").value;
 
     const curso =
     document.getElementById("curso").value;
