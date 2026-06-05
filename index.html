@@ -10,18 +10,19 @@
 </head>
 <body>
     <!-- GitHub Corner -->
-    <a href="https://github.com/tuusuario/doe-dashboard" class="github-corner" target="_blank">
-        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#7c3aed; color:#1a0b2e; position: absolute; top: 0; right: 0; border: 0;">
+    <a href="https://github.com/Brenda-hi/doe-dashboard-generator" class="github-corner" target="_blank" aria-label="Ver en GitHub">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#7c3aed; color:#1a0b2e; position: fixed; top: 0; right: 0; border: 0; z-index: 1001;">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
             <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
-            <path d="M115.0,115.0 C114.9,115.1 1１８．７，１１６．５ １１９．８，１１５．４ L１３３．７，１０１．６ C１３６．９，９９．２ １３９．９，９８．４ １４２．２，９８．６ C１３３．８，８８．０ １２７．５，７４．４ １４３．８，５８．０ C１４８．５，５３．４ １５４．０，５１．２ １５９．７，５１．０ C１６０．３，４９．４ １６３．２，４３．６ １７１．４，４０．１ C１７１．４，４０．１ １７６．１，４２．５ １７８．８，５６．２ C１８３．１，５８．６ １８７．２，６₁．₈ ₁₉₀．₉，₆₅․₄ C₁₉₄․₅，₆₉․₀ ₁₉₇․₇，₇₃․₂ ₂₀₀․₁，₇₇․₆ C₂₁₃․₈，₈₀․₂ ₂₁₆․³，₈⁴․⁹ ₂₁⁶․³，₈⁴․⁹ C₂¹²․⁷，⁹³․¹ ₂⁰⁶․⁹，⁹⁶․⁰ ₂⁰⁵․⁴，⁹⁶․⁶ C₂⁰⁵․¹，¹⁰²․⁴ ₂⁰³․⁰，¹⁰⁷․⁸ ₁₉ͺ³،¹¹²․٥ C₁٨١٫٩،١٢٨٫٩ ₁٦٨٫٣،١٢٢٫٥ ₁٥٧٫٧،١١٤٫١ C₁٥٧٫٩،١١ً٫ًC₁۵۶٫۷،۱۲۰٫۹C₁۵۲٫۷،۱۲۴٫۹L₁۴ͳ٫Ͳ،ͳ͵͸٫ͷC₁͵ͻ٫ͺ،ͳ͵͹٫͹C₁Ͷͳ٫͸،ͳͶͳ٫ଽC₁Ͷͳ٫ͺ،ͳͶͳ٫ͺZ" fill="currentColor" class="octo-body"></path>
+            <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
         </svg>
     </a>
+
     <!-- SIDEBAR MENU -->
     <div class="sidebar">
         <div class="sidebar-logo">
-            <h3>📊 DASHBOARD - UNI FIIS</h3>
-            <p>CONTROL ESTADÍSTICO Y PROCESOS</p>
+            <h3>📊 DOE DASHBOARD</h3>
+            <p>CONTROL ESTADÍSTICO</p>
         </div>
         <div class="menu-item active" data-menu="problema1">
             <span class="menu-icon">📐</span>
@@ -64,32 +65,35 @@
                     <input type="date" id="fecha">
                 </div>
             </div>
-            <!-- Después de </div> de data-cards -->
+            
+            <!-- LAST UPDATE SECTION -->
             <div class="last-update">
                 <i class="fas fa-sync-alt"></i>
                 <span id="last-update-text">Última actualización: Cargando...</span>
             </div>
-
         </div>
 
         <!-- DASHBOARD PANELS -->
         <div id="problema1-panel" class="dashboard-panel">
             <div class="panel-header">
-                <h2>PROBLEMA DE CUADRADO LATINO</h2>
+                <h2>📐 PROBLEMA DE CUADRADO LATINO</h2>
+                <p style="color: #c4b5fd; margin-top: 10px;">Diseño experimental para controlar dos fuentes de variabilidad</p>
             </div>
             <div id="problema1-content"></div>
         </div>
 
         <div id="problema2-panel" class="dashboard-panel hidden">
             <div class="panel-header">
-                <h2>PROBLEMA DE CUADRADO LATINO INCOMPLETO</h2>
+                <h2>📏 PROBLEMA DE CUADRADO LATINO INCOMPLETO</h2>
+                <p style="color: #c4b5fd; margin-top: 10px;">Diseño eficiente cuando no se pueden probar todas las combinaciones</p>
             </div>
             <div id="problema2-content"></div>
         </div>
 
         <div id="problema3-panel" class="dashboard-panel hidden">
             <div class="panel-header">
-                <h2>PROBLEMA DE DISEÑO FACTORIAL INCOMPLETO</h2>
+                <h2>🔬 PROBLEMA DE DISEÑO FACTORIAL INCOMPLETO</h2>
+                <p style="color: #c4b5fd; margin-top: 10px;">Análisis de experimentos con múltiples factores</p>
             </div>
             <div id="problema3-content"></div>
         </div>
@@ -97,15 +101,17 @@
         <div id="anexos-panel" class="dashboard-panel hidden">
             <div class="panel-header">
                 <h2>📎 ANEXOS</h2>
+                <p style="color: #c4b5fd; margin-top: 10px;">Documentación adicional, archivos y referencias</p>
             </div>
             <div id="anexos-content"></div>
         </div>
 
-        <button class="btn-save" onclick="saveAllData()">💾 GUARDAR DATOS</button>
+        <button class="btn-save" onclick="saveAllData()">
+            <i class="fas fa-save"></i> 💾 GUARDAR DATOS
+        </button>
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="assets/js/app.js"></script>
 </body>
-
 </html>
