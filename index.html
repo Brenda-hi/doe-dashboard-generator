@@ -1,175 +1,111 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>DOE Dashboard Generator</title>
-
-    <!-- Bootstrap -->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- CSS -->
-
-    <link rel="stylesheet"
-          href="assets/css/styles.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOE Dashboard - Control de Procesos Estadísticos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-
 <body>
-
-<div class="container py-5">
-
-    <div class="text-center mb-5">
-
-        <span class="dashboard-tag">
-            DOE DASHBOARD GENERATOR
-        </span>
-
-        <h1 class="dashboard-title mt-4">
-            Crear Dashboard
-        </h1>
-
+    <!-- GitHub Corner -->
+    <a href="https://github.com/tuusuario/doe-dashboard" class="github-corner" target="_blank">
+        <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#7c3aed; color:#1a0b2e; position: absolute; top: 0; right: 0; border: 0;">
+            <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+            <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+            <path d="M115.0,115.0 C114.9,115.1 1１８．７，１１６．５ １１９．８，１１５．４ L１３３．７，１０１．６ C１３６．９，９９．２ １３９．９，９８．４ １４２．２，９８．６ C１３３．８，８８．０ １２７．５，７４．４ １４３．８，５８．０ C１４８．５，５３．４ １５４．０，５１．２ １５９．７，５１．０ C１６０．３，４９．４ １６３．２，４３．６ １７１．４，４０．１ C１７１．４，４０．１ １７６．１，４２．５ １７８．８，５６．２ C１８３．１，５８．６ １８７．２，６₁．₈ ₁₉₀．₉，₆₅․₄ C₁₉₄․₅，₆₉․₀ ₁₉₇․₇，₇₃․₂ ₂₀₀․₁，₇₇․₆ C₂₁₃․₈，₈₀․₂ ₂₁₆․³，₈⁴․⁹ ₂₁⁶․³，₈⁴․⁹ C₂¹²․⁷，⁹³․¹ ₂⁰⁶․⁹，⁹⁶․⁰ ₂⁰⁵․⁴，⁹⁶․⁶ C₂⁰⁵․¹，¹⁰²․⁴ ₂⁰³․⁰，¹⁰⁷․⁸ ₁₉ͺ³،¹¹²․٥ C₁٨١٫٩،١٢٨٫٩ ₁٦٨٫٣،١٢٢٫٥ ₁٥٧٫٧،١١٤٫١ C₁٥٧٫٩،١١ً٫ًC₁۵۶٫۷،۱۲۰٫۹C₁۵۲٫۷،۱۲۴٫۹L₁۴ͳ٫Ͳ،ͳ͵͸٫ͷC₁͵ͻ٫ͺ،ͳ͵͹٫͹C₁Ͷͳ٫͸،ͳͶͳ٫ଽC₁Ͷͳ٫ͺ،ͳͶͳ٫ͺZ" fill="currentColor" class="octo-body"></path>
+        </svg>
+    </a>
+    <!-- SIDEBAR MENU -->
+    <div class="sidebar">
+        <div class="sidebar-logo">
+            <h3>📊 DASHBOARD - UNI FIIS</h3>
+            <p>CONTROL ESTADÍSTICO Y PROCESOS</p>
+        </div>
+        <div class="menu-item active" data-menu="problema1">
+            <span class="menu-icon">📐</span>
+            <span class="menu-text">PROBLEMA 1</span>
+        </div>
+        <div class="menu-item" data-menu="problema2">
+            <span class="menu-icon">📏</span>
+            <span class="menu-text">PROBLEMA 2</span>
+        </div>
+        <div class="menu-item" data-menu="problema3">
+            <span class="menu-icon">🔬</span>
+            <span class="menu-text">PROBLEMA 3</span>
+        </div>
+        <div class="menu-item" data-menu="anexos">
+            <span class="menu-icon">📎</span>
+            <span class="menu-text">ANEXOS</span>
+        </div>
     </div>
 
-    <div class="card-custom">
-
-        <div class="row g-4">
-
-            <!-- TIPO -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Tipo de ejercicio
-                </label>
-
-                <select class="form-control"
-                        id="tipo">
-
-                    <option>
-                        CUADRADO LATINO
-                    </option>
-
-                    <option>
-                        DISEÑO FACTORIAL
-                    </option>
-
-                </select>
-
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+        <!-- HEADER -->
+        <div class="main-header">
+            <h1>📈 SOLUCIÓN DE LA TERCERA PRÁCTICA CALIFICADA</h1>
+            <div class="data-cards">
+                <div class="data-card">
+                    <label>👤 NOMBRE</label>
+                    <input type="text" id="nombre" placeholder="Ingrese su nombre">
+                </div>
+                <div class="data-card">
+                    <label>🆔 CÓDIGO</label>
+                    <input type="text" id="codigo" placeholder="Ingrese su código">
+                </div>
+                <div class="data-card">
+                    <label>📚 CURSO</label>
+                    <input type="text" id="curso" value="Control de Procesos Estadísticos" placeholder="Curso">
+                </div>
+                <div class="data-card">
+                    <label>📅 FECHA</label>
+                    <input type="date" id="fecha">
+                </div>
             </div>
-
-            <!-- TITULO -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Título
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       id="titulo">
-
-            </div>
-
-            <!-- ESTUDIANTE -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Estudiante
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       id="estudiante">
-
-            </div>
-
-            <!-- CURSO -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Curso
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       id="curso">
-
-            </div>
-
-            <!-- UNIVERSIDAD -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Universidad
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       id="universidad">
-
-            </div>
-
-            <!-- FECHA -->
-
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Fecha
-                </label>
-
-                <input type="text"
-                       class="form-control"
-                       id="fecha">
-
-            </div>
-            <!-- CONCLUSIONES -->
-
-            <div class="col-12">
-
-                <label class="form-label">
-                    Conclusiones
-                </label>
-
-                <textarea class="form-control"
-                          rows="6"
-                          id="conclusiones"></textarea>
-
-            </div>
-
-            <!-- BOTON -->
-
-            <div class="col-12 text-center">
-
-                <button class="btn btn-primary btn-lg"
-                        onclick="generarDashboard()">
-
-                    GENERAR DASHBOARD
-
-                </button>
-
+            <!-- Después de </div> de data-cards -->
+            <div class="last-update">
+                <i class="fas fa-sync-alt"></i>
+                <span id="last-update-text">Última actualización: Cargando...</span>
             </div>
 
         </div>
 
+        <!-- DASHBOARD PANELS -->
+        <div id="problema1-panel" class="dashboard-panel">
+            <div class="panel-header">
+                <h2>PROBLEMA DE CUADRADO LATINO</h2>
+            </div>
+            <div id="problema1-content"></div>
+        </div>
+
+        <div id="problema2-panel" class="dashboard-panel hidden">
+            <div class="panel-header">
+                <h2>PROBLEMA DE CUADRADO LATINO INCOMPLETO</h2>
+            </div>
+            <div id="problema2-content"></div>
+        </div>
+
+        <div id="problema3-panel" class="dashboard-panel hidden">
+            <div class="panel-header">
+                <h2>PROBLEMA DE DISEÑO FACTORIAL INCOMPLETO</h2>
+            </div>
+            <div id="problema3-content"></div>
+        </div>
+
+        <div id="anexos-panel" class="dashboard-panel hidden">
+            <div class="panel-header">
+                <h2>📎 ANEXOS</h2>
+            </div>
+            <div id="anexos-content"></div>
+        </div>
+
+        <button class="btn-save" onclick="saveAllData()">💾 GUARDAR DATOS</button>
     </div>
-
-</div>
-
-<!-- JS -->
-
-<script src="assets/js/app.js"></script>
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/app.js"></script>
 </body>
+
 </html>
