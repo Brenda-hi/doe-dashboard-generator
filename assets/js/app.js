@@ -9,7 +9,8 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 let imagesData = {
     problema1: { python: [], excel: [], minitab: [], r: [] },
     problema2: { python: [], excel: [], minitab: [], r: [] },
-    problema3: { python: [], excel: [], minitab: [], r: [] }
+    problema3: { python: [], excel: [], minitab: [], r: [] },
+    problema4: { python: [], excel: [], minitab: [], r: [] }  // NUEVO
 };
 let pendingPersonalData = {};
 // Inicializar
@@ -57,7 +58,7 @@ async function loadAllImagesData() {
 
 function setupMenuEvents() {
     const menuItems = document.querySelectorAll('.menu-item');
-    const panels = ['problema1', 'problema2', 'problema3', 'anexos'];
+    const panels = ['problema1', 'problema2', 'problema3', 'problema4', 'anexos'];
     
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
@@ -80,6 +81,7 @@ async function renderAllPanels() {
     await renderProblemaPanel('problema1');
     await renderProblemaPanel('problema2');
     await renderProblemaPanel('problema3');
+    await renderProblemaPanel('problema4');  // NUEVO
     renderAnexosPanel();
     
     // IMPORTANTE: Esperar más tiempo para que el DOM esté listo
@@ -88,6 +90,7 @@ async function renderAllPanels() {
         await loadTextsForProblema('problema1');
         await loadTextsForProblema('problema2');
         await loadTextsForProblema('problema3');
+        await loadTextsForProblema('problema4');  // NUEVO
         await loadAnexosComments();
         console.log('✅ Carga inicial de textos completada');
     }, 800);
@@ -679,8 +682,8 @@ window.saveAllData = async function() {
             console.log('✅ Datos personales guardados');
         }
         
-        // 2. Guardar todas las introducciones y conclusiones de los 3 problemas
-        const problemas = ['problema1', 'problema2', 'problema3'];
+        // 2. Guardar todas las introducciones y conclusiones de los 4 problemas
+        const problemas = ['problema1', 'problema2', 'problema3', 'problema4'];
         const herramientas = ['python', 'excel', 'minitab', 'r'];
         
         for (const problema of problemas) {
@@ -1323,7 +1326,79 @@ window.reloadProblema2 = async function() {
     
     console.log('✅ Problema 2 recargado');
 };
+// Función específica para depurar problema 4
+window.checkProblema4State = function() {
+    console.log('=== ESTADO COMPLETO DEL PROBLEMA 4 ===');
+    
+    const herramientas = ['python', 'excel', 'minitab', 'r'];
+    
+    herramientas.forEach(herramienta => {
+        const textarea = document.getElementById(`problema4-${herramienta}-intro`);
+        if (textarea) {
+            console.log(`${herramienta.toUpperCase()}:`);
+            console.log(`  - Existe: SÍ`);
+            console.log(`  - Contenido: "${textarea.value.substring(0, 40)}..."`);
+        } else {
+            console.log(`${herramienta.toUpperCase()}: NO EXISTE`);
+        }
+    });
+    
+    const conclusion = document.getElementById('problema4-conclusion');
+    if (conclusion) {
+        console.log(`CONCLUSIÓN:`);
+        console.log(`  - Existe: SÍ`);
+        console.log(`  - Contenido: "${conclusion.value.substring(0, 40)}..."`);
+    }
+};
 
+// Función para recargar solo problema 4
+window.reloadProblema4 = async function() {
+    console.log('🔄 Recargando solo el problema 4...');
+    
+    // Limpiar y recrear el contenido
+    const container = document.getElementById('problema4-content');
+    if (container) {
+        // Guardar temporalmente los valores actuales si existen
+        const currentValues = {};
+        const herramientas = ['python', 'excel', 'minitab', 'r'];
+        herramientas.forEach(herramienta => {
+            const textarea = document.getElementById(`problema4-${herramienta}-intro`);
+            if (textarea) {
+                currentValues[herramienta] = textarea.value;
+            }
+        });
+        const conclusionTextarea = document.getElementById('problema4-conclusion');
+        if (conclusionTextarea) {
+            currentValues.conclusion = conclusionTextarea.value;
+        }
+        
+        // Recargar el panel
+        await renderProblemaPanel('problema4');
+        
+        // Restaurar valores si es necesario
+        setTimeout(() => {
+            herramientas.forEach(herramienta => {
+                if (currentValues[herramienta]) {
+                    const newTextarea = document.getElementById(`problema4-${herramienta}-intro`);
+                    if (newTextarea) {
+                        newTextarea.value = currentValues[herramienta];
+                    }
+                }
+            });
+            if (currentValues.conclusion) {
+                const newConclusion = document.getElementById('problema4-conclusion');
+                if (newConclusion) {
+                    newConclusion.value = currentValues.conclusion;
+                }
+            }
+            
+            // Forzar carga de textos desde BD
+            loadTextsForProblema('problema4');
+        }, 100);
+    }
+    
+    console.log('✅ Problema 4 recargado');
+};
 // 6. Verificar la última actualización en la UI
 window.checkLastUpdate = function() {
     const updateElement = document.getElementById('last-update-text');
@@ -1338,4 +1413,6 @@ console.log('   testManualSave("problema2", "python")    - Probar guardado manua
 console.log('   forceAttachListener("problema2", "python") - Forzar event listener');
 console.log('   checkProblema2State()                    - Ver estado completo');
 console.log('   reloadProblema2()                        - Recargar problema 2');
+console.log('   checkProblema4State()                    - Ver estado completo del problema 4');
+console.log('   reloadProblema4()                        - Recargar problema 4');
 console.log('   checkLastUpdate()                        - Ver última actualización');
