@@ -7,10 +7,10 @@ const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_
 
 // Almacenar imágenes por problema/herramienta
 let imagesData = {
-    problema1: { python: [], excel: [], minitab: [], r: [] },
-    problema2: { python: [], excel: [], minitab: [], r: [] },
-    problema3: { python: [], excel: [], minitab: [], r: [] },
-    problema4: { python: [], excel: [], minitab: [], r: [] }  // NUEVO
+    problema1: { python: [], excel: [], minitab: [], r: [], enunciado: [] },
+    problema2: { python: [], excel: [], minitab: [], r: [], enunciado: [] },
+    problema3: { python: [], excel: [], minitab: [], r: [], enunciado: [] },
+    problema4: { python: [], excel: [], minitab: [], r: [], enunciado: [] }
 };
 let pendingPersonalData = {};
 // Inicializar
@@ -48,7 +48,7 @@ async function loadAllImagesData() {
             .order('orden', { ascending: true });
         
         if (!error && data) {
-            const herramientas = ['python', 'excel', 'minitab', 'r'];
+            const herramientas = ['python', 'excel', 'minitab', 'r', 'enunciado'];
             herramientas.forEach(herramienta => {
                 imagesData[problema][herramienta] = data.filter(img => img.herramienta === herramienta);
             });
@@ -100,8 +100,9 @@ async function renderProblemaPanel(problemaId) {
     const container = document.getElementById(`${problemaId}-content`);
     if (!container) return;
     
-    const tools = ['python', 'excel', 'minitab', 'r'];
+    const tools = ['enunciado', 'python', 'excel', 'minitab', 'r'];
     const toolNames = { 
+        enunciado: '📋 ENUNCIADO DEL PROBLEMA',
         python: '🐍 PYTHON', 
         excel: '📊 EXCEL', 
         minitab: '📈 MINITAB', 
@@ -114,13 +115,15 @@ async function renderProblemaPanel(problemaId) {
         html += `
             <div class="section-block">
                 <h3 class="section-title">${toolNames[tool]}</h3>
+                ${tool !== 'enunciado' ? `
                 <div class="intro-text">
                     <textarea id="${problemaId}-${tool}-intro" rows="3" 
                               placeholder="Escribe una introducción sobre el análisis en ${toolNames[tool]}..."></textarea>
                 </div>
+                ` : ''}
                 <div class="image-grid" id="grid-${problemaId}-${tool}"></div>
                 <div class="add-image-btn" onclick="addNewImage('${problemaId}', '${tool}')">
-                    <i class="fas fa-plus-circle"></i> Agregar nueva imagen
+                    <i class="fas fa-plus-circle"></i> ${tool === 'enunciado' ? 'Agregar imagen del enunciado' : 'Agregar nueva imagen'}
                 </div>
             </div>
         `;
