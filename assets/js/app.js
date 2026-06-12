@@ -38,7 +38,7 @@ async function initApp() {
 }
 
 async function loadAllImagesData() {
-    const problemas = ['problema1', 'problema2', 'problema3','problema4']];
+    const problemas = ['problema1', 'problema2', 'problema3','problema4'];
     
     for (const problema of problemas) {
         const { data, error } = await supabaseClient
