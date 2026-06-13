@@ -131,9 +131,9 @@ async function renderProblemaPanel(problemaId) {
     
     html += `
         <div class="conclusion-section">
-            <h3 class="section-title">📋 CONCLUSIONES</h3>
+            <h3 class="section-title">📋 CONCLUSIONES Y RECOMENDACIONES</h3>
             <textarea id="${problemaId}-conclusion" rows="5" 
-                      placeholder="Escribe las conclusiones del análisis..."></textarea>
+                      placeholder="Escribe las conclusiones y recomendaciones del análisis..."></textarea>
         </div>
     `;
     
